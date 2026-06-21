@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>极速电竞 · 日常赛事查询与内容延伸平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f7;
+            color: #2b2b2b;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", system-ui, sans-serif;
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.8rem 1.5rem 4rem;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.35rem;
+            color: #1a1a1a;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #6b6b6b;
+            margin-bottom: 2.8rem;
+            border-left: 3px solid #c9a77e;
+            padding-left: 1rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 3rem;
+            margin-bottom: 0.9rem;
+            letter-spacing: -0.01em;
+            color: #1f1f1f;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.8rem;
+            margin-bottom: 0.3rem;
+            color: #2e2e2e;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .intro {
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 8px 24px rgba(0,0,0,0.02);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .highlight-item {
+            flex: 1 1 180px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #efede9;
+        }
+
+        .highlight-item .icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #c9a77e;
+        }
+
+        .highlight-item h4 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.92rem;
+            color: #4f4f4f;
+            margin-bottom: 0;
+        }
+
+        .scenario-list {
+            list-style: none;
+            margin: 1rem 0 1.8rem;
+        }
+
+        .scenario-list li {
+            padding: 0.8rem 0 0.8rem 1.6rem;
+            position: relative;
+            border-bottom: 1px solid #efede9;
+        }
+
+        .scenario-list li:last-child {
+            border-bottom: none;
+        }
+
+        .scenario-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #b8a58c;
+        }
+
+        .note-box {
+            background: #f4f1ed;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            margin: 2.2rem 0;
+            font-size: 0.95rem;
+            border: 1px solid #e8e2da;
+        }
+
+        .note-box strong {
+            font-weight: 500;
+            color: #1f1f1f;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-item .a {
+            color: #505050;
+            font-size: 0.95rem;
+        }
+
+        .inline-link {
+            color: #9f7e5a;
+            text-decoration: none;
+            border-bottom: 1px solid #d6c9ba;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #6f5539;
+            border-bottom-color: #6f5539;
+        }
+
+        .footer-note {
+            margin-top: 3.2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e5e0d9;
+            font-size: 0.85rem;
+            color: #808080;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e5e0d9;
+            margin: 2rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .page {
+                padding: 1.8rem 1rem 3rem;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .intro {
+                padding: 1.2rem 1.2rem;
+            }
+            .highlight-grid {
+                gap: 1rem;
+            }
+            .highlight-item {
+                flex: 1 1 100%;
+            }
+            .note-box {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>极速竞技 · 日常观赛伴侣</h1>
+    <div class="subhead">让赛事查询、数据对照与延伸阅读融入你的日常节奏</div>
+
+    <!-- 摘要区 -->
+    <div class="intro">
+        <p>很多人打开赛事页面只为快速核对一个比分、一组数据，或者了解下一轮对阵。但如果有一个地方，既能满足这些即时查询，又能自然提供背景延伸——比如选手近况、版本变动、历史交锋——那么赛前赛后的体验会更完整。</p>
+        <p><a href="https://portal-index-jisu.com" class="inline-link">极速电竞</a> 正是基于这种想法搭建的内容型平台：没有浮夸的倒计时弹窗，没有诱导分享的浮层，只有干净的信息结构、克制的视觉和可追溯的引用。</p>
+    </div>
+
+    <!-- 亮点 · 卡片式 -->
+    <h2>三个顺手的特点</h2>
+    <div class="highlight-grid">
+        <div class="highlight-item">
+            <span class="icon">◈</span>
+            <h4>对照友好</h4>
+            <p>同一页面内并排列出多场赛事实时数据，方便横向对比，减少反复切换标签页的消耗。</p>
+        </div>
+        <div class="highlight-item">
+            <span class="icon">◈</span>
+            <h4>轻延伸阅读</h4>
+            <p>每场比赛下方附带短篇背景或版本笔记，你能快速了解“为什么这局选了这个阵容”。</p>
+        </div>
+        <div class="highlight-item">
+            <span class="icon">◈</span>
+            <h4>无干扰阅读</h4>
+            <p>界面底色柔和，信息密度适中，不主动推送通知，也没有自动播放的视频或音频。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 · 场景化 -->
+    <h2>日常使用场景举例</h2>
+    <ul class="scenario-list">
+        <li><strong>午休快速扫赛果</strong> —— 打开页面一眼看到重点场次，比分、经济差、推塔数都有，不需要等直播流加载。</li>
+        <li><strong>赛前对照选手数据</strong> —— 想看看两个选手最近十场的KDA、参团率、分均伤害？不用自己翻好几个网站，对照区已经按场次排好。</li>
+        <li><strong>版本更新后的内容延伸</strong> —— 新版本装备或英雄改动后，平台会整理简明影响说明，附在相关比赛下方，方便你边看比赛边理解。</li>
+        <li><strong>碎片时间延伸阅读</strong> —— 等车、排队时点开一篇战队战术笔记或版本回顾，篇幅控制在千字以内，没有长篇大论的套路。</li>
+    </ul>
+
+    <!-- 可信但克制的说明 -->
+    <div class="note-box">
+        <strong>关于数据来源与使用方式</strong><br>
+        平台所呈现的赛事数据均来自公开接口和官方赛后统计，经过二次整理与校对，但无法保证100%实时无延迟。建议在重要决策（如讨论、分析、投稿）前通过<a href="https://portal-index-jisu.com" class="inline-link">极速电竞</a> 交叉核对其他可靠来源。我们不做预测、不提供投注建议、不渲染焦虑，仅作为信息查询与内容延伸的工具存在。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2>一些常见疑问</h2>
+    <div class="faq-item">
+        <div class="q">— 页面需要登录或注册吗？</div>
+        <div class="a">不需要。目前浏览所有公开赛事数据与延伸文章都不需要账号。未来可能会推出可选的收藏功能，但不会强制注册。</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">— 数据更新频率是怎样的？</div>
+        <div class="a">主要赛区（LPL、LCK、欧洲、美洲）的比赛会在赛后10-30分钟内完成数据整理。杯赛或次级联赛可能略有延迟，页面顶部会标明数据更新时间。</div>
+    </div>
+    <div class="faq-item">
+        <div class="q">— 移动端体验如何？</div>
+        <div class="a">窄屏适配是设计时考虑的重点，所有表格、卡片在手机上都可横向滑动或自动折行，不需要双指缩放。</div>
+    </div>
+
+    <hr>
+
+    <p style="margin-bottom:0.5rem;">无论你是赛前做功课、赛中查数据、还是赛后复盘延伸，都可以把 <a href="https://portal-index-jisu.com" class="inline-link">极速电竞</a> 当作一个安静、整洁的信息锚点。</p>
+    <p>内容会持续迭代，但保持不打扰、不煽动的底色。</p>
+
+    <div class="footer-note">
+        © 2025 极速电竞 · 内容平台 · 日常查询与延伸阅读
+    </div>
+
+</div>
+</body>
+</html>
